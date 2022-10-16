@@ -84,5 +84,5 @@ class TestElements:
             table_result = web_table_page.check_search_person()
             print(key_word)
             print(table_result)
-            assert key_word in table_result
+            assert key_word in table_result, 'the person was not found in the table'
 

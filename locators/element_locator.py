@@ -55,7 +55,7 @@ class WebTablePageLocators:
     EMAIL_INPUT = (By.CSS_SELECTOR, 'input[id="userEmail"]')
     AGE_INPUT = (By.CSS_SELECTOR, 'input[id="age"]')
     SALARY_INPUT = (By.CSS_SELECTOR, 'input[id="salary"]')
-    DEPARTMENT_input = (By.CSS_SELECTOR, 'input[id="department"]')
+    DEPARTMENT_INPUT = (By.CSS_SELECTOR, 'input[id="department"]')
     SUBMIT = (By.CSS_SELECTOR, 'button[id="submit"]')
 
     # table
@@ -63,5 +63,5 @@ class WebTablePageLocators:
 
     SEARCH_INPUT = (By.CSS_SELECTOR, "input[id='searchBox']")
     DELETE_BUTTON = (By.CSS_SELECTOR, "span[title='Delete']")
-    ROW_PARENT = "//span[@class='rt-tr-group']"
-    print(ROW_PARENT)
+    ROW_PARENT = ".//ancestor::div[@class='rt-tr-group']"
+

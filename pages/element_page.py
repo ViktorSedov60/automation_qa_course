@@ -100,7 +100,7 @@ class WebTablePage(BasePage):
 
     def add_new_person(self):
         count = 1
-        while count != 0:
+        while count != 3:
             person_info = next(generator_person())
             firstname = person_info.firstname
             lastname = person_info.lastname
@@ -114,7 +114,7 @@ class WebTablePage(BasePage):
             self.element_is_visible(self.locators.EMAIL_INPUT).send_keys(email)
             self.element_is_visible(self.locators.AGE_INPUT).send_keys(age)
             self.element_is_visible(self.locators.SALARY_INPUT).send_keys(salary)
-            self.element_is_visible(self.locators.DEPARTMENT_input).send_keys(department)
+            self.element_is_visible(self.locators.DEPARTMENT_INPUT).send_keys(department)
             # sleep(5)
             self.element_is_visible(self.locators.SUBMIT).click()
             count -= 1
@@ -132,9 +132,13 @@ class WebTablePage(BasePage):
 
     def check_search_person(self):
         global row
+        # data = []
         delete_button = self.element_is_present(self.locators.DELETE_BUTTON)
-        try:
-            row = delete_button.find_elements(By.XPATH, self.locators.ROW_PARENT)
-        except NoSuchElementException as exception:
-            print('Опять полная хрень')
-        return row.text.splitlines()
+
+        row1 = delete_button.find_elements(By.XPATH, self.locators.ROW_PARENT)
+        for row in row1:
+           # print(row.text.splitlines())
+            return row.text.splitlines()
+
+
+
