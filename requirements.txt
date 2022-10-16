@@ -3,3 +3,5 @@ selenium~=4.4.3
 ChromeDriverManager~=3.8.3
 Faker 14.2.1
 
+
+Faker~=14.2.1
