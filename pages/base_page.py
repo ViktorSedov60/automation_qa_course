@@ -45,4 +45,4 @@ class BasePage:
         action.context_click(element)
         action.perform()
 
-    # def action_double_click(self):
+    # def swith_to_new(self):

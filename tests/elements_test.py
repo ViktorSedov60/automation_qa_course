@@ -1,7 +1,7 @@
 import random
 from time import sleep
 
-from pages.element_page import TextBoxPage, CheckBoxPage, RadioButtonPage, WebTablePage, ButtonsPage
+from pages.element_page import TextBoxPage, CheckBoxPage, RadioButtonPage, WebTablePage, ButtonsPage, LinksPage
 
 
 class TestElements:
@@ -129,3 +129,23 @@ class TestElements:
             assert click == "You have done a dynamic click", "The dynamic click button not pressed"
 
 
+
+    class TestLinksPage:
+
+        def test_check_link(self, driver):
+            links_page = LinksPage(driver, 'https://demoqa.com/links')
+            links_page.open()
+            href_link = links_page.check_new_tab_simple_link()
+
+            assert href_link == 'https://demoqa.com/'
+
+
+        def test_broken_link(self, driver):
+            links_page = LinksPage(driver, 'https://demoqa.com/links')
+            links_page.open()
+            response_code = links_page.check_broken_link('https://demoqa.com/bad-request')
+            print(response_code)
+            assert response_code == 400
+
+
+    class TestUpLoadAnd
