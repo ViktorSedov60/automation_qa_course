@@ -3,7 +3,7 @@ from time import sleep
 from selenium.webdriver.common.by import By
 from generator.generator import generator_person
 from pages.base_page import BasePage
-from locators.element_locator import TextBoxLocator, CheckBoxPageLocators, RadioButtonPageLocators, WebTablePageLocators
+from locators.element_locator import TextBoxLocator, CheckBoxPageLocators, RadioButtonPageLocators, WebTablePageLocators, ButtonsPageLocators
 from selenium.common.exceptions import NoSuchElementException
 
 
@@ -174,3 +174,21 @@ class WebTablePage(BasePage):
         return len(list_rows)
 
 
+class ButtonsPage(BasePage):
+    locators = ButtonsPageLocators()
+
+    def click_on_different_button(self, type_click):
+        if type_click == 'double':
+            self.action_double_click(self.element_is_visible(self.locators.DOUBLE_BUTTON))
+            return self.check_clicked_button(self.locators.SUCCESS_DOUBLE)
+
+        if type_click == 'right':
+            self.action_right_click(self.element_is_visible(self.locators.RIGHT_CLICK_BUTTON))
+            return self.check_clicked_button(self.locators.SUCCESS_RIGHT)
+
+        if type_click == 'click':
+            self.element_is_visible(self.locators.CLICK_ME_BUTTON).click()
+            return self.check_clicked_button(self.locators.SUCCESS_CLICK_ME)
+
+    def check_clicked_button(self, element):
+        return self.element_is_present(element).text
