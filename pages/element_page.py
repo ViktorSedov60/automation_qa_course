@@ -1,11 +1,13 @@
+import base64
+import os
 import random
 from time import sleep
 
 import requests
 from selenium.webdriver.common.by import By
-from generator.generator import generator_person
+from generator.generator import generator_person, generated_file
 from pages.base_page import BasePage
-from locators.element_locator import TextBoxLocator, CheckBoxPageLocators, RadioButtonPageLocators, WebTablePageLocators, ButtonsPageLocators, LinksPageLocators
+from locators.element_locator import TextBoxLocator, CheckBoxPageLocators, RadioButtonPageLocators, WebTablePageLocators, ButtonsPageLocators, LinksPageLocators, UpLoadAndDownLoadLocators
 from selenium.common.exceptions import NoSuchElementException
 
 
@@ -207,14 +209,14 @@ class LinksPage(BasePage):
         request = requests.get(link_href)
 
         if request.status_code == 200:
-            # simple_link.click()
-            # self.driver.switch_to.window(self.driver.window_handles[1])
-            # url = self.driver.current_url
+            simple_link.click()
+            self.driver.switch_to.window(self.driver.window_handles[1])
+            url = self.driver.current_url
 
-            return link_href
+            return link_href, url
         else:
             return link_href, request.status_code
-            # return request.status_code
+
 
     def check_broken_link(self, url):
         request = requests.get(url)
@@ -223,5 +225,27 @@ class LinksPage(BasePage):
         else:
             return request.status_code
 
+class UpLoadAndDownLoad(BasePage):
+    locators = UpLoadAndDownLoadLocators()
+
+    def upload_file(self):
+        file_name, path = generated_file()
+        self.element_is_present(self.locators.UPLOAD_FILE).send_keys(path)
+        texts = self.element_is_present(self.locators.UPLOADED_RESALT).text
+        os.remove(path)
+        return file_name.split('\\')[-1], texts.split('\\')[-1]
+
+
+    def download_files(self):
+        link = self.element_is_present(self.locators.DOWNLOAD_FILE).get_attribute('href')
+        link = base64.b64decode(link)
+        path_name_files = rf'C:\Users\vikto\PycharmProjects\automation_qa_course\filetest{random.randint(0, 999)}.jpg'
+        with open(path_name_files, 'wb+') as f:
+            offset = link.find(b'\xff\xd8')
+            f.write(link[offset:])
+            check_file = os.path.exists(path_name_files)
+            f.close()
+        os.remove(path_name_files)
+        return check_file
 
 

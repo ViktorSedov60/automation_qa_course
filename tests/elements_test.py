@@ -1,7 +1,7 @@
 import random
 from time import sleep
 
-from pages.element_page import TextBoxPage, CheckBoxPage, RadioButtonPage, WebTablePage, ButtonsPage, LinksPage
+from pages.element_page import TextBoxPage, CheckBoxPage, RadioButtonPage, WebTablePage, ButtonsPage, LinksPage, UpLoadAndDownLoad
 
 
 class TestElements:
@@ -135,9 +135,9 @@ class TestElements:
         def test_check_link(self, driver):
             links_page = LinksPage(driver, 'https://demoqa.com/links')
             links_page.open()
-            href_link = links_page.check_new_tab_simple_link()
+            href_link, result = links_page.check_new_tab_simple_link()
 
-            assert href_link == 'https://demoqa.com/'
+            assert href_link == result
 
 
         def test_broken_link(self, driver):
@@ -148,4 +148,18 @@ class TestElements:
             assert response_code == 400
 
 
-    class TestUpLoadAnd
+    class TestUpLoadAndDownLoad:
+
+        def test_upload_file(selfs, driver):
+            upload_page = UpLoadAndDownLoad(driver, 'https://demoqa.com/upload-download')
+            upload_page.open()
+            file_name, result = upload_page.upload_file()
+            assert file_name == result, "the file has not been upload"
+
+
+        def test_download_file(self,driver):
+            download_page = UpLoadAndDownLoad(driver, 'https://demoqa.com/upload-download')
+            download_page.open()
+            check = download_page.download_files()
+            assert check is True, "the file has not been udownload"
+
