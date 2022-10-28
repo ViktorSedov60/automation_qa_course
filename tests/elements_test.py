@@ -6,6 +6,7 @@ from pages.element_page import TextBoxPage, CheckBoxPage, RadioButtonPage, WebTa
 
 class TestElements:
     class TestTextBox:
+        # автоматическое заполнение текстовых полей с автоматической генерацией данных
 
         def test_text_box(self, driver):
             text_box_page = TextBoxPage(driver, 'https://demoqa.com/text-box')
@@ -28,6 +29,7 @@ class TestElements:
             # assert input_data == output_data, "что то пошло не так"
 
     class TestCheckBox:
+        # Автоматическое рандомное заполнение чекбоксов и проверка сравнения с текстом выбранных чекбоксов.
         def test_check_box(self, driver):
             check_box_page = CheckBoxPage(driver, 'https://demoqa.com/checkbox')
             check_box_page.open()
@@ -42,6 +44,7 @@ class TestElements:
 
 
     class TestRadioButton:
+        # автоматическое заполнение радиокнопок и проверка
 
         def test_radio_button(self, driver):
             radio_button_page = RadioButtonPage(driver, 'https://demoqa.com/radio-button')
@@ -61,10 +64,11 @@ class TestElements:
 
             assert output_yes == 'Yes', "'Yes' have not been selected"
             assert output_impressive == 'Impressive', "'Yes' have not been selected"
-            assert output_no == 'No', "'Yes' have not been selected"
+            assert output_no != 'No', "'NO' have not been selected"
 
 
     class TestWebTable:
+        # добавление и удаление текста в таблицу и проверка добавления и удаления
 
         def test_web_table_add_person(self, driver):
             web_table_page = WebTablePage(driver, 'https://demoqa.com/webtables')
@@ -115,6 +119,8 @@ class TestElements:
 
 
     class TestButtonsPage:
+        # кликание кнопок и проверка выполнения
+
         def test_different_click_the_buttons(self, driver):
             button_page = ButtonsPage(driver, 'https://demoqa.com/buttons')
             button_page.open()
@@ -131,6 +137,7 @@ class TestElements:
 
 
     class TestLinksPage:
+        # переход на страницы браузера как существующие, так и ложные, проверка выполнения
 
         def test_check_link(self, driver):
             links_page = LinksPage(driver, 'https://demoqa.com/links')
@@ -149,6 +156,7 @@ class TestElements:
 
 
     class TestUpLoadAndDownLoad:
+        # Добавление внешнего файла рандомно созданного, проверка, удаление файла, проверка; дабавление картинки, обработка картинка, удаление картинки, проверка
 
         def test_upload_file(selfs, driver):
             upload_page = UpLoadAndDownLoad(driver, 'https://demoqa.com/upload-download')
@@ -161,10 +169,11 @@ class TestElements:
             download_page = UpLoadAndDownLoad(driver, 'https://demoqa.com/upload-download')
             download_page.open()
             check = download_page.download_files()
-            assert check is True, "the file has not been udownload"
+            assert check is True, "the file has not been download"
 
 
     class TestDynamicProperties:
+        # Проверка динамических изменений в браузере
 
         def test_dynamic_properties(self, driver):
             dynamic_propeties_page = DynamicPropertiesPage(driver, 'https://demoqa.com/dynamic-properties')
@@ -183,3 +192,6 @@ class TestElements:
             dynamic_propeties_page.open()
             enable = dynamic_propeties_page.check_enable_button()
             assert enable is True, 'button did not enable after 5 second'
+
+
+

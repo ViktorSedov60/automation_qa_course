@@ -4,7 +4,8 @@ from data.data import Person
 from faker import Faker
 
 faker_ru = Faker('ru_RU')
-Faker.seed()
+faker_en = Faker('En')
+# Faker.seed()
 
 def generator_person():
     yield Person(
@@ -16,7 +17,11 @@ def generator_person():
         salary=random.randint(100000, 800000),
         email=faker_ru.email(),
         current_address=faker_ru.address(),
-        permanent_address=faker_ru.address(),)
+        permanent_address=faker_ru.address(),
+        mobile=faker_ru.msisdn(), )
+
+
+
 
 
 def generated_file():

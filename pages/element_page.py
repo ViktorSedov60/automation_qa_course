@@ -164,6 +164,7 @@ class WebTablePage(BasePage):
 
 
     def select_up_to_some_rows(self):
+        self.remove_footer()
         count = [5, 10 ,20, 25, 50, 100]
         data = []
         for x in count:
