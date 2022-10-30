@@ -1,6 +1,6 @@
 from time import sleep
 
-from pages.alert_win_page import NewTabPage, AlertPage
+from pages.alert_win_page import NewTabPage, AlertPage, FramePage
 
 
 class TestAlertTabWin:
@@ -61,4 +61,14 @@ class TestAlertTabWin:
             # print(text, alert4)
             assert alert4 == f'You entered {text}'
             # assert text in alert4
+
+    class TestFrame:
+        def test_frame(self, driver):
+            frame_page = FramePage(driver, 'https://demoqa.com/frames')
+            frame_page.open()
+            result1 = frame_page.check_frame('frame1')
+            result2 = frame_page.check_frame('frame2')
+            assert result1 == ['This is a sample page', '500px', '350px']
+            assert result2 == ['This is a sample page', '100px', '100px']
+
 

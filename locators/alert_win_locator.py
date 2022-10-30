@@ -19,4 +19,9 @@ class AlertPageLocator:
     ALERT_BUTTON4 = (By.CSS_SELECTOR, 'button#promtButton')
     ALERT_BUTTON4_RESULT = (By.CSS_SELECTOR, 'span#promptResult')
 
+class FramePageLocator:
+    FRAME1 = (By.CSS_SELECTOR, 'iframe#frame1')
+    FRAME2 = (By.CSS_SELECTOR, 'iframe#frame2')
+    TITLE_FRAME = (By.CSS_SELECTOR, 'h1#sampleHeading')
+
 
