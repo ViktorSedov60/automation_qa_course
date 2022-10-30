@@ -24,4 +24,10 @@ class FramePageLocator:
     FRAME2 = (By.CSS_SELECTOR, 'iframe#frame2')
     TITLE_FRAME = (By.CSS_SELECTOR, 'h1#sampleHeading')
 
+class NestedFreameLocator:
+    FRAME1 = (By.CSS_SELECTOR, 'iframe#frame1')
+    FRAME2 = (By.CSS_SELECTOR, 'iframe[srcdoc="<p>Child Iframe</p>"]')
+    PARENT_TEXT = (By.CSS_SELECTOR, 'body')
+    CHILD_TEXT = (By.CSS_SELECTOR, 'p')
+
 

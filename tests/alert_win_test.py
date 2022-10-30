@@ -1,6 +1,6 @@
 from time import sleep
 
-from pages.alert_win_page import NewTabPage, AlertPage, FramePage
+from pages.alert_win_page import NewTabPage, AlertPage, FramePage, NestedFreamePage
 
 
 class TestAlertTabWin:
@@ -71,4 +71,13 @@ class TestAlertTabWin:
             assert result1 == ['This is a sample page', '500px', '350px']
             assert result2 == ['This is a sample page', '100px', '100px']
 
+
+    class TestNestedFreames:
+        def test_nested_frames(self, driver):
+
+            frame_page = NestedFreamePage(driver, 'https://demoqa.com/nestedframes')
+            frame_page.open()
+            parent_text, child_text = frame_page.check_nested_frames()
+            assert parent_text == 'Parent frame'
+            assert child_text == 'Child Iframe'
 
