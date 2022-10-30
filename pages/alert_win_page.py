@@ -1,7 +1,7 @@
 import random
 from time import sleep
 
-from locators.alert_win_locator import AlertTabWinLocator, AlertPageLocator, FramePageLocator, NestedFreameLocator
+from locators.alert_win_locator import AlertTabWinLocator, AlertPageLocator, FramePageLocator, NestedFreameLocator, ModalDialogsLocator
 from pages.base_page import BasePage
 
 
@@ -101,4 +101,21 @@ class NestedFreamePage(BasePage):
 
         return parent_text, child_text
 
+
+class ModalDialogsPage(BasePage):
+    locators = ModalDialogsLocator()
+
+    def Check_Small_Modal(self):
+        small_modal = self.element_is_visible(self.locators.SMALL_MODAL).click()
+        self.driver.switch_to.frame(small_modal)
+        small_text = self.element_is_present(self.locators.TEXT_SMALL_MODAL).text
+        small_close = self.element_is_visible(self.locators.CLOSE_SMALL_MODAL).click()
+        return  small_text
+
+    def Check_Large_Modal(self):
+        large_modal = self.element_is_visible(self.locators.LARGE_MODAL).click()
+        self.driver.switch_to.frame(large_modal)
+        large_text = self.element_is_present(self.locators.TEXT_LARGE_MODAL).text
+        large_close = self.element_is_visible(self.locators.CLOSE_LARGE_MODAL).click()
+        return large_text
 

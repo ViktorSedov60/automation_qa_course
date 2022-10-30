@@ -1,6 +1,6 @@
 from time import sleep
 
-from pages.alert_win_page import NewTabPage, AlertPage, FramePage, NestedFreamePage
+from pages.alert_win_page import NewTabPage, AlertPage, FramePage, NestedFreamePage, ModalDialogsPage
 
 
 class TestAlertTabWin:
@@ -80,4 +80,14 @@ class TestAlertTabWin:
             parent_text, child_text = frame_page.check_nested_frames()
             assert parent_text == 'Parent frame'
             assert child_text == 'Child Iframe'
+
+
+    class TestModalDialogs:
+        def test_modal_dialogs(self, driver):
+            modal_page = ModalDialogsPage(driver, 'https://demoqa.com/modal-dialogs')
+            modal_page.open()
+            small_text = modal_page.Check_Small_Modal()
+            large_text = modal_page.Check_Large_Modal()
+            assert small_text == 'This is a small modal. It has very less content'
+            assert "Lorem Ipsum is simply dummy text of the printing and typesetting industry" in large_text
 

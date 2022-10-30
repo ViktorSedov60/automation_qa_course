@@ -30,4 +30,11 @@ class NestedFreameLocator:
     PARENT_TEXT = (By.CSS_SELECTOR, 'body')
     CHILD_TEXT = (By.CSS_SELECTOR, 'p')
 
+class ModalDialogsLocator:
+    SMALL_MODAL = (By.CSS_SELECTOR, 'button#showSmallModal')
+    TEXT_SMALL_MODAL = (By.CSS_SELECTOR, 'div.modal-body')
+    CLOSE_SMALL_MODAL = (By.CSS_SELECTOR, 'button#closeSmallModal')
+    LARGE_MODAL = (By.CSS_SELECTOR, 'button#showLargeModal')
+    TEXT_LARGE_MODAL = (By.CSS_SELECTOR, 'div.modal-body > p')
+    CLOSE_LARGE_MODAL = (By.CSS_SELECTOR, 'button#closeLargeModal')
 
