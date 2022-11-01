@@ -9,4 +9,11 @@ class AccordianLocator:
     ACCORD_WHY = (By.CSS_SELECTOR, 'div#section3Heading')
     ACCORD_WHY_CONTENT = (By.CSS_SELECTOR, 'div#section3Content p')
 
+class AutoCompleteLocator:
+    MULTI_INPUT = (By.CSS_SELECTOR, 'input#autoCompleteMultipleInput')
+    MULTI_LABEL = (By.CSS_SELECTOR, 'div.css-12jo7m5')
+    MALTI_LABEL_REMOVE = (By.CSS_SELECTOR, 'div.css-xb97g8 svg path')
+    # MALTI_LABEL_REMOVE = (By.CSS_SELECTOR, 'div[class="css-1rhbuit-multiValue auto-complete__multi-value"] svg path')
 
+    SINGL_INPUT = (By.CSS_SELECTOR, 'input#autoCompleteSingleInput')
+    SINGL_CONTAINER = (By.CSS_SELECTOR, 'div.auto-complete__single-value')
