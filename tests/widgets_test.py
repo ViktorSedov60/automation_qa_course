@@ -25,12 +25,12 @@ class TestWidgets:
             colors_result = widgets_page.chek_color_multi()
             assert colors == colors_result, 'the added colors are missing in the input'
 
-        def test_remove_multi(selfs, driver):
+        def test_remove_multi(self, driver):
             widgets_page = AutoCompletePage(driver, 'https://demoqa.com/auto-complete')
             widgets_page.open()
             widgets_page.fill_input_multi()
             count, count_after = widgets_page.remove_multi_label()
-            assert count > count_after, 'the added colors are missing in the input'
+            assert count > count_after, 'the delete color are missing in the input'
 
         def test_fill_single(self, driver):
             widgets_page = AutoCompletePage(driver, 'https://demoqa.com/auto-complete')
@@ -39,6 +39,19 @@ class TestWidgets:
             color = widgets_page.fill_input_single()
             # widgets_page.chec_color_single()
             color_resalt = widgets_page.chec_color_single()
-            assert color == color_resalt, 'the added colors are missing in the input'
+            assert color == color_resalt, 'the added color are missing in the input'
+
+
+        def test_multi_delete(self, driver):
+            widgets_page = AutoCompletePage(driver, 'https://demoqa.com/auto-complete')
+            widgets_page.open()
+            single = widgets_page.multi_now()
+            second = widgets_page.fill_input_multi()
+            third = widgets_page.multi_delete()
+            assert single == third
+            assert len(second) > single
+
+
+
 
 

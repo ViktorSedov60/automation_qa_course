@@ -80,5 +80,15 @@ class AutoCompletePage(BasePage):
         color = self.element_is_visible(self.locators.SINGL_CONTAINER)
         return color.text
 
+    def multi_now(self):
+        count_value_now = len(self.element_are_present(self.locators.MULTI_CONTAINER))
+        return count_value_now
+
+
+
+    def multi_delete(self):
+        self.element_is_present(self.locators.MULTI_DELETE).click()
+        count_value_after = len(self.element_are_present(self.locators.MULTI_CONTAINER))
+        return count_value_after
 
 

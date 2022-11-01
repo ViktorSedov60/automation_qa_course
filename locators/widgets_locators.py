@@ -14,6 +14,9 @@ class AutoCompleteLocator:
     MULTI_LABEL = (By.CSS_SELECTOR, 'div.css-12jo7m5')
     MALTI_LABEL_REMOVE = (By.CSS_SELECTOR, 'div.css-xb97g8 svg path')
     # MALTI_LABEL_REMOVE = (By.CSS_SELECTOR, 'div[class="css-1rhbuit-multiValue auto-complete__multi-value"] svg path')
+    MULTI_DELETE = (By.CSS_SELECTOR, 'div.auto-complete__clear-indicator svg path')
+    MULTI_CONTAINER = (By.CSS_SELECTOR, 'div#autoCompleteMultipleContainer')
+
 
     SINGL_INPUT = (By.CSS_SELECTOR, 'input#autoCompleteSingleInput')
     SINGL_CONTAINER = (By.CSS_SELECTOR, 'div.auto-complete__single-value')
