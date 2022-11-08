@@ -25,11 +25,12 @@ class TestAlertTabWin:
             new_mess_page = NewTabPage(driver, 'https://demoqa.com/browser-windows')
 
             new_mess_page.open()
-            text_result = new_mess_page.check_open_new_mess()
+            new_mess_page.check_open_new_mess()
+            sleep(3)
 
 
             # assert text_result == '"Knowledge increases by sharing but not by saving. Please share this website with your friends and in your organization."', 'что то пошло не так'
-            print(text_result)
+            # print(text_result)
 
 
     class TestAlert:

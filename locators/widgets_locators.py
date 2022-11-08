@@ -20,3 +20,19 @@ class AutoCompleteLocator:
 
     SINGL_INPUT = (By.CSS_SELECTOR, 'input#autoCompleteSingleInput')
     SINGL_CONTAINER = (By.CSS_SELECTOR, 'div.auto-complete__single-value')
+
+
+
+class DatePickerLocator:
+    DATE_INPUT = (By.CSS_SELECTOR, 'input#datePickerMonthYearInput')
+    SELECT_MONTH = (By.CSS_SELECTOR, 'select.react-datepicker__month-select')
+    SELECT_YEAR = (By.CSS_SELECTOR, 'select.react-datepicker__year-select')
+    SELECT_DAY_LIST = (By.CSS_SELECTOR, 'div.react-datepicker__day.react-datepicker__day')
+
+    DATE_TIME_INPUT = (By.CSS_SELECTOR, 'input#dateAndTimePickerInput')
+    DATE_TIME_MONTH = (By.CSS_SELECTOR, 'div.react-datepicker__month-read-view')
+    DATE_TIME_YEAR = (By.CSS_SELECTOR, 'div.react-datepicker__year-read-view')
+    DATE_TIME_TIME_LIST = (By.CSS_SELECTOR, 'li.react-datepicker__time-list-item ')
+    DATE_TIME_MONTH_LIST = (By.CSS_SELECTOR, 'div.react-datepicker__month-option')
+    DATE_TIME_YEAR_LIST = (By.CSS_SELECTOR, 'div.react-datepicker__year-dropdown')
+

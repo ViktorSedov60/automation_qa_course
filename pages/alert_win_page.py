@@ -23,13 +23,16 @@ class NewTabPage(BasePage):
 
     def check_open_new_mess(self):
         self.element_is_visible(self.locators.MESS_BUTTON).click()
+        sleep(5)
+        # self.window_stop()
+
 
         self.driver.switch_to.window(self.driver.window_handles[1])
-        self.driver.fullscreen_window()
+        # self.driver.maximize_window()
 
         text_title = self.element_is_present(self.locators.WIN_NEW).text
-        # print(text_title)
-        return text_title
+        print(text_title)
+        # return text_title
 
 class AlertPage(BasePage):
     locators = AlertPageLocator()

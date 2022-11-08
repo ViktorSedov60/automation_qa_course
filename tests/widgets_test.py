@@ -1,6 +1,6 @@
 from time import sleep
 
-from pages.widgets_page import AccordianPage, AutoCompletePage
+from pages.widgets_page import AccordianPage, AutoCompletePage, DatePickerPage
 
 
 class TestWidgets:
@@ -45,13 +45,30 @@ class TestWidgets:
         def test_multi_delete(self, driver):
             widgets_page = AutoCompletePage(driver, 'https://demoqa.com/auto-complete')
             widgets_page.open()
-            single = widgets_page.multi_now()
+            first = widgets_page.multi_birth()
             second = widgets_page.fill_input_multi()
             third = widgets_page.multi_delete()
-            assert single == third
-            assert len(second) > single
+            assert first == third
+            assert len(second) > first
 
 
+
+    class TestDatePicker:
+        def test_change_data(self, driver):
+            data_picker = DatePickerPage(driver, 'https://demoqa.com/date-picker')
+            data_picker.open()
+            value_date_before, value_date_after = data_picker.select_date()
+            print(value_date_before, value_date_after)
+            assert value_date_before != value_date_after
+
+
+
+        def test_change_date_time(self, driver):
+            data_picker = DatePickerPage(driver, 'https://demoqa.com/date-picker')
+            data_picker.open()
+            value_date_before, value_date_after = data_picker.select_date_time()
+            print(value_date_before, value_date_after)
+            assert value_date_before != value_date_after
 
 
 

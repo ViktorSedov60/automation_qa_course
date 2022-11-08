@@ -3,9 +3,10 @@ from time import sleep
 
 from selenium.common import TimeoutException
 from selenium.webdriver import Keys
+from selenium.webdriver.support.select import Select
 
-from generator.generator import generated_color
-from locators.widgets_locators import AccordianLocator, AutoCompleteLocator
+from generator.generator import generated_color, generated_date
+from locators.widgets_locators import AccordianLocator, AutoCompleteLocator, DatePickerLocator
 from pages.base_page import BasePage
 
 
@@ -80,7 +81,7 @@ class AutoCompletePage(BasePage):
         color = self.element_is_visible(self.locators.SINGL_CONTAINER)
         return color.text
 
-    def multi_now(self):
+    def multi_birth(self):
         count_value_now = len(self.element_are_present(self.locators.MULTI_CONTAINER))
         return count_value_now
 
@@ -90,5 +91,52 @@ class AutoCompletePage(BasePage):
         self.element_is_present(self.locators.MULTI_DELETE).click()
         count_value_after = len(self.element_are_present(self.locators.MULTI_CONTAINER))
         return count_value_after
+
+
+class DatePickerPage(BasePage):
+    locators = DatePickerLocator()
+
+    def select_date(self):
+        date = next(generated_date())
+        input_date = self.element_is_visible(self.locators.DATE_INPUT)
+        value_date_before = input_date.get_attribute('value')
+        input_date.click()
+        self.set_date_by_text(self.locators.SELECT_MONTH, date.month)
+        self.set_date_by_text(self.locators.SELECT_YEAR, date.year)
+        self.set_date_item_from_list(self.locators.SELECT_DAY_LIST, date.day)
+        value_date_after = input_date.get_attribute('value')
+        return value_date_before, value_date_after
+
+    def select_date_time(self):
+        date = next(generated_date())
+        input_date = self.element_is_visible(self.locators.DATE_TIME_INPUT)
+        value_date_before = input_date.get_attribute('value')
+        input_date.click()
+        self.element_is_clickable(self.locators.DATE_TIME_MONTH).click()
+
+        self.set_date_item_from_list(self.locators.DATE_TIME_MONTH_LIST, date.month)
+        self.element_is_clickable(self.locators.DATE_TIME_YEAR).click()
+        self.set_date_item_from_list(self.locators.DATE_TIME_YEAR_LIST, date.year)
+        self.set_date_item_from_list(self.locators.SELECT_DAY_LIST, date.day)
+        self.set_date_item_from_list(self.locators.DATE_TIME_TIME_LIST, date.time)
+        input_date_after = self.element_is_visible(self.locators.DATE_TIME_INPUT)
+        value_date_after = input_date_after.get_attribute('value')
+        return value_date_before, value_date_after
+
+
+
+
+
+    def set_date_by_text(self, element, value):
+        select = Select(self.element_is_present(element))
+        select.select_by_visible_text(value)
+
+
+    def set_date_item_from_list(self, elements, value):
+        item_list = self.element_are_present(elements)
+        for item in item_list:
+            if item.text == value:
+                item.click()
+                break
 
 

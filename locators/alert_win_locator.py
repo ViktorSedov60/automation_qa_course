@@ -11,6 +11,7 @@ class AlertTabWinLocator:
 
     WIN_NEW = (By.CSS_SELECTOR, 'body')
 
+
 class AlertPageLocator:
     ALERT_BUTTON1 = (By.CSS_SELECTOR, 'button#alertButton')
     ALERT_BUTTON2 = (By.CSS_SELECTOR, 'button#timerAlertButton')
