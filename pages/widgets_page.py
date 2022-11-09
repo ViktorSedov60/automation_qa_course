@@ -6,7 +6,7 @@ from selenium.webdriver import Keys
 from selenium.webdriver.support.select import Select
 
 from generator.generator import generated_color, generated_date
-from locators.widgets_locators import AccordianLocator, AutoCompleteLocator, DatePickerLocator
+from locators.widgets_locators import AccordianLocator, AutoCompleteLocator, DatePickerLocator, SliderLocator, ProgressBarLocator, TabLocator
 from pages.base_page import BasePage
 
 
@@ -138,5 +138,60 @@ class DatePickerPage(BasePage):
             if item.text == value:
                 item.click()
                 break
+
+
+
+class SliderPage(BasePage):
+    locators = SliderLocator()
+
+    def change_slider_value(self):
+        value_before = self.element_is_visible(self.locators.SLIDER_VALUE)
+        before = value_before.get_attribute('value')
+        slider_input = self.element_is_visible(self.locators.INPUT_SLIDER)
+        self.action_drag_and_drop_by_offset(slider_input, random.randint(1, 100), 0)
+
+        value_after = self.element_is_visible(self.locators.SLIDER_VALUE)
+        after = value_after.get_attribute('value')
+
+
+        return before, after
+
+
+
+
+class ProgressBarPage(BasePage):
+    locators = ProgressBarLocator()
+
+    def change_progress_bar(self):
+
+        self.element_is_visible(self.locators.START_STOP_BUTTON).click()
+        sleep(1)
+        self.element_is_visible(self.locators.START_STOP_BUTTON).click()
+        value_before = self.element_is_present(self.locators.PROGRESS_BAR).text
+
+        progress_bar_button = self.element_is_visible(self.locators.START_STOP_BUTTON)
+        progress_bar_button.click()
+        sleep(random.randint(1, 5))
+        progress_bar_button.click()
+        value_after = self.element_is_present(self.locators.PROGRESS_BAR).text
+        return value_before, value_after
+
+
+class TabPage(BasePage):
+    locators = TabLocator()
+    def change_tab(self):
+        # self.remove_footer()
+        # self.driver.maximize_window()
+        self.element_is_visible(self.locators.WHAT_TAB).click()
+        what_tab = self.element_is_visible(self.locators.WHAT_TEXT).text
+        self.element_is_visible(self.locators.ORIGIN_TAB).click()
+        origin_tab = self.element_is_visible(self.locators.ORIGIN_TEXT).text
+        self.element_is_visible(self.locators.USE_TAB).click()
+        use_tab = self.element_is_visible(self.locators.USE_TEXT).text
+        # self.element_is_visible(self.locators.MORE_TAB).click()
+        # more_tab = self.element_is_visible(self.locators.MORE_TEXT).text
+        return len(what_tab), len(origin_tab), len(use_tab)  # len(more_tab)
+
+
 
 

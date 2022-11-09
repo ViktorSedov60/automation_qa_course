@@ -36,3 +36,30 @@ class DatePickerLocator:
     DATE_TIME_MONTH_LIST = (By.CSS_SELECTOR, 'div.react-datepicker__month-option')
     DATE_TIME_YEAR_LIST = (By.CSS_SELECTOR, 'div.react-datepicker__year-dropdown')
 
+
+class SliderLocator:
+    INPUT_SLIDER = (By.CSS_SELECTOR, 'input.range-slider.range-slider--primary')
+    SLIDER_VALUE = (By.CSS_SELECTOR, 'input#sliderValue')
+
+
+
+
+class ProgressBarLocator:
+    START_STOP_BUTTON = (By.CSS_SELECTOR, 'button#startStopButton')
+    PROGRESS_BAR = (By.CSS_SELECTOR, 'div[class="progress-bar bg-info"]')
+
+
+class TabLocator:
+    WHAT_TAB = (By.CSS_SELECTOR, 'a#demo-tab-what')
+    WHAT_TEXT = (By.CSS_SELECTOR, 'div#demo-tabpane-what p')
+
+    ORIGIN_TAB = (By.CSS_SELECTOR, 'a#demo-tab-origin')
+    ORIGIN_TEXT = (By.CSS_SELECTOR, 'div#demo-tabpane-origin p')
+
+    USE_TAB = (By.CSS_SELECTOR, 'a#demo-tab-use')
+    USE_TEXT = (By.CSS_SELECTOR, 'div#demo-tabpane-use p')
+
+    MORE_TAB = (By.CSS_SELECTOR, 'a#demo-tab-more')
+    MORE_TEXT = (By.CSS_SELECTOR, 'div#demo-tabpane-more')
+
+

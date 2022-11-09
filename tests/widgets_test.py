@@ -1,6 +1,6 @@
 from time import sleep
 
-from pages.widgets_page import AccordianPage, AutoCompletePage, DatePickerPage
+from pages.widgets_page import AccordianPage, AutoCompletePage, DatePickerPage, SliderPage, ProgressBarPage, TabPage
 
 
 class TestWidgets:
@@ -71,4 +71,35 @@ class TestWidgets:
             assert value_date_before != value_date_after
 
 
+    class TestSlider:
+        def test_slider(self, driver):
+            slider = SliderPage(driver, 'https://demoqa.com/slider')
+            slider.open()
+            before, after = slider.change_slider_value()
+
+            print(before)
+            print(after)
+            assert before != after
+
+
+
+    class  TestProgressBar:
+        def test_progress_bar(self, driver):
+            bar_progress = ProgressBarPage(driver, 'https://demoqa.com/progress-bar')
+            bar_progress.open()
+            # sleep(2)
+            before, after = bar_progress.change_progress_bar()
+            assert before != after
+
+
+    class TestTab:
+        def test_tab(selfs, driver):
+            tab_test = TabPage(driver, 'https://demoqa.com/tabs')
+            tab_test.open()
+            # driver.maximize_window()
+            what, origin, use = tab_test.change_tab()
+            # print(what, origin, use)
+            assert what != 0
+            assert origin > 0
+            assert use > 0
 
