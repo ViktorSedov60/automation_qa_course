@@ -63,3 +63,18 @@ class TabLocator:
     MORE_TEXT = (By.CSS_SELECTOR, 'div#demo-tabpane-more')
 
 
+class ToolTipsLocator:
+    BUTTON = (By.CSS_SELECTOR, 'button#toolTipButton')
+    CLICK_BUTTON = (By.CSS_SELECTOR, 'button[aria-describedby="buttonToolTip"]')
+
+    FIELD = (By.CSS_SELECTOR, 'input#toolTipTextField')
+    CLICK_FIELD = (By.CSS_SELECTOR, 'input[aria-describedby="textFieldToolTip"]')
+
+    CONTRARY = (By.CSS_SELECTOR, 'div#texToolTopContainer a')
+    CLICK_CONTRARY = (By.CSS_SELECTOR, 'a[aria-describedby="contraryTexToolTip"]')
+
+    SECTION = (By.XPATH, '//*[.="1.10.32"]')
+    CLICK_SECTION = (By.CSS_SELECTOR, 'a[aria-describedby="sectionToolTip"]')
+
+    TOOL_TIP_INNRS = (By.CSS_SELECTOR, 'div.tooltip-inner')
+

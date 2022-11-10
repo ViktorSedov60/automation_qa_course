@@ -1,6 +1,6 @@
 from time import sleep
 
-from pages.widgets_page import AccordianPage, AutoCompletePage, DatePickerPage, SliderPage, ProgressBarPage, TabPage
+from pages.widgets_page import AccordianPage, AutoCompletePage, DatePickerPage, SliderPage, ProgressBarPage, TabPage, ToolTipsPage
 
 
 class TestWidgets:
@@ -102,4 +102,17 @@ class TestWidgets:
             assert what != 0
             assert origin > 0
             assert use > 0
+
+
+    class TestToolTips:
+        def test_tool_tips(self, driver):
+            tool_tips = ToolTipsPage(driver, 'https://demoqa.com/tool-tips')
+            tool_tips.open()
+            button, field, contrary, section = tool_tips.check_tool_tip()
+
+            assert button == 'You hovered over the Button'
+            assert field == 'You hovered over the text field'
+            assert contrary == 'You hovered over the Contrary'
+            assert section == 'You hovered over the 1.10.32'
+
 
