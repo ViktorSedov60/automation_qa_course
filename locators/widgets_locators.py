@@ -78,3 +78,11 @@ class ToolTipsLocator:
 
     TOOL_TIP_INNRS = (By.CSS_SELECTOR, 'div.tooltip-inner')
 
+
+class MenuLocator:
+    MAIN_ITEM_LIST = (By.CSS_SELECTOR, 'ul#nav li a')
+    # MAIN_ITEM_2 = (By.CSS_SELECTOR, '')
+    # MAIN_ITEM_3 = (By.CSS_SELECTOR, '')
+
+
+

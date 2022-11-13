@@ -1,6 +1,6 @@
 from time import sleep
 
-from pages.widgets_page import AccordianPage, AutoCompletePage, DatePickerPage, SliderPage, ProgressBarPage, TabPage, ToolTipsPage
+from pages.widgets_page import AccordianPage, AutoCompletePage, DatePickerPage, SliderPage, ProgressBarPage, TabPage, ToolTipsPage, MenuPage
 
 
 class TestWidgets:
@@ -115,4 +115,13 @@ class TestWidgets:
             assert contrary == 'You hovered over the Contrary'
             assert section == 'You hovered over the 1.10.32'
 
+
+    class TestMenu:
+        def test_menu(self, driver):
+            main_menu = MenuPage(driver, 'https://demoqa.com/menu')
+            main_menu.open()
+            driver.maximize_window()
+            sleep(0.3)
+            data = main_menu.check_menu()
+            assert data == ['Main Item 1', 'Main Item 2', 'Sub Item', 'Sub Item', 'SUB SUB LIST »', 'Sub Sub Item 1', 'Sub Sub Item 2', 'Main Item 3']
 

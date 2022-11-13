@@ -6,7 +6,7 @@ from selenium.webdriver import Keys
 from selenium.webdriver.support.select import Select
 
 from generator.generator import generated_color, generated_date
-from locators.widgets_locators import AccordianLocator, AutoCompleteLocator, DatePickerLocator, SliderLocator, ProgressBarLocator, TabLocator, ToolTipsLocator
+from locators.widgets_locators import AccordianLocator, AutoCompleteLocator, DatePickerLocator, SliderLocator, ProgressBarLocator, TabLocator, ToolTipsLocator, MenuLocator
 from pages.base_page import BasePage
 
 
@@ -213,5 +213,17 @@ class ToolTipsPage(BasePage):
 
         tool_tip_text_section = self.get_text_from_tool_tips(self.locators.SECTION, self.locators.CLICK_SECTION)
         return tool_tip_text_button, tool_tip_text_field, tool_tip_text_contrary, tool_tip_text_section
+
+
+class MenuPage(BasePage):
+    locators = MenuLocator()
+
+    def check_menu(self):
+        menu_item_list = self.element_are_present(self.locators.MAIN_ITEM_LIST)
+        data = []
+        for item in menu_item_list:
+            self.action_move_to_element(item)
+            data.append(item.text)
+        return  data
 
 
