@@ -81,8 +81,12 @@ class ToolTipsLocator:
 
 class MenuLocator:
     MAIN_ITEM_LIST = (By.CSS_SELECTOR, 'ul#nav li a')
-    # MAIN_ITEM_2 = (By.CSS_SELECTOR, '')
-    # MAIN_ITEM_3 = (By.CSS_SELECTOR, '')
+
+class SelectMenuLocator:
+    SELECT_VALUE = (By.CSS_SELECTOR, 'div#withOptGroup')
+    SELECT_ONE =(By.CSS_SELECTOR, 'div#selectOne')
+    OLD_SELECT_MENU = (By.CSS_SELECTOR, 'select#oldSelectMenu')
+
 
 
 

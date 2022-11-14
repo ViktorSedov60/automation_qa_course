@@ -1,6 +1,6 @@
 from time import sleep
 
-from pages.widgets_page import AccordianPage, AutoCompletePage, DatePickerPage, SliderPage, ProgressBarPage, TabPage, ToolTipsPage, MenuPage
+from pages.widgets_page import AccordianPage, AutoCompletePage, DatePickerPage, SliderPage, ProgressBarPage, TabPage, ToolTipsPage, MenuPage, SelectMenuPage
 
 
 class TestWidgets:
@@ -124,4 +124,13 @@ class TestWidgets:
             sleep(0.3)
             data = main_menu.check_menu()
             assert data == ['Main Item 1', 'Main Item 2', 'Sub Item', 'Sub Item', 'SUB SUB LIST »', 'Sub Sub Item 1', 'Sub Sub Item 2', 'Main Item 3']
+
+    class TestSelectMenu:
+        def test_select_menu(self, driver):
+            select_menu = SelectMenuPage(driver, 'https://demoqa.com/select-menu')
+            select_menu.open()
+            # select_menu.check_select_value()
+            select_old_menu = select_menu.select_index()
+            print(select_old_menu)
+            sleep(5)
 

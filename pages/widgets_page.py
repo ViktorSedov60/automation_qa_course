@@ -6,7 +6,7 @@ from selenium.webdriver import Keys
 from selenium.webdriver.support.select import Select
 
 from generator.generator import generated_color, generated_date
-from locators.widgets_locators import AccordianLocator, AutoCompleteLocator, DatePickerLocator, SliderLocator, ProgressBarLocator, TabLocator, ToolTipsLocator, MenuLocator
+from locators.widgets_locators import AccordianLocator, AutoCompleteLocator, DatePickerLocator, SliderLocator, ProgressBarLocator, TabLocator, ToolTipsLocator, MenuLocator, SelectMenuLocator
 from pages.base_page import BasePage
 
 
@@ -225,5 +225,28 @@ class MenuPage(BasePage):
             self.action_move_to_element(item)
             data.append(item.text)
         return  data
+
+class SelectMenuPage(BasePage):
+    locators = SelectMenuLocator()
+    def check_select_value(self):
+        self.element_is_visible(self.locators.SELECT_VALUE).click()
+
+    def check_select_one(self):
+        pass
+
+    def check_old_select_menu(self):
+        select = Select(self.element_is_visible(self.locators.OLD_SELECT_MENU)).select_by_index(random.randint(0, 11))
+        return select.text
+
+    def select_index(self):
+        index = random.randint(0, 10)
+
+        select = Select(self.element_is_visible(self.locators.OLD_SELECT_MENU))
+       
+        select_after = select.select_by_index(index)
+        #  = self.element_is_visible(self.locators.OLD_SELECT_MENU)
+        return select_after
+        # return [item.text for item in select_after]
+        # return index
 
 
