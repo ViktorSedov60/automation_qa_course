@@ -1,6 +1,6 @@
 from time import sleep
 
-from pages.interactions_page import SortablePage, SelectablePage, ResizablePage, DroppablePage
+from pages.interactions_page import SortablePage, SelectablePage, ResizablePage, DroppablePage, DragabblePage
 
 
 class TestInteractions:
@@ -65,7 +65,25 @@ class TestInteractions:
             will, will_after = droppable_test.revert_revert_draggable('will')
             not_will, not_will_after = droppable_test.revert_revert_draggable('not_will')
             assert will != will_after
-            assert not_will ==not_will_after
+            assert not_will == not_will_after
 
+
+    class TestDragabble:
+
+        def test_dragabble(self, driver):
+            dragabble_test = DragabblePage(driver, 'https://demoqa.com/dragabble')
+            dragabble_test.open()
+            before, after = dragabble_test.simple_drag_box()
+            assert before != after
+
+        def test_axis_restricted(self, driver):
+            dragabble_test = DragabblePage(driver, 'https://demoqa.com/dragabble')
+            dragabble_test.open()
+            top_x, left_x = dragabble_test.axis_restricted_x()
+            top_y, left_y = dragabble_test.axis_restricted_y()
+            assert top_x[0][0] == top_x[1][0] and int(top_x[1][0]) == 0
+            assert left_x[0][0] != left_x[1][0] and int(left_x[1][0]) != 0
+            assert top_y[0][0] !=top_y[1][0] and int(top_y[1][0]) != 0
+            assert left_y[0][0] == left_y[1][0] and int(left_y[1][0]) == 0
 
 

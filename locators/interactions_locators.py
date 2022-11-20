@@ -50,4 +50,20 @@ class DroppableLocator:
     DROP_HERE_REVERT = (By.CSS_SELECTOR, 'div#revertableDropContainer div#droppable')
 
 
+class DragabbleLocator:
+    SIMPLE = (By.ID, 'draggableExample-tab-simple')
+    DRAG_MY = (By.ID, 'dragBox')
+
+    AXIS_RESTRICTED = (By.ID, 'draggableExample-tab-axisRestriction')
+    ONLI_X = (By.ID, 'restrictedX')
+    ONLI_Y = (By.ID, 'restrictedY')
+
+    CONTAINER_RESTRICTED = (By.ID, 'draggableExample-tab-containerRestriction')
+    THE_BOX = (By.CSS_SELECTOR, 'div.draggable.ui-widget-content.ui-draggable')
+    MY_PARENT = (By.CSS_SELECTOR, 'span.ui-widget-header.ui-draggable')
+
+    CURSOR_STYLE = (By.ID, 'draggableExample-tab-cursorStyle')
+    CENTER_CURSOR = (By.ID, 'cursorCenter')
+    TOP_LEFT_CURSOR = (By.ID, 'cursorTopLeft')
+    BOTTOM_CURSOR = (By.ID, 'cursorBottom')
 
